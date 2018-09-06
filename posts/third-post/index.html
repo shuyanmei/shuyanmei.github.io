@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>SHUYAN  | Are you satisfied with your job as a developer?</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.47.1" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="../../dist/css/app.ab4b67a3ea25990fa8279f3b7ef08b61.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="Are you satisfied with your job as a developer?" />
+<meta property="og:description" content="Introduction
+Tech industry has been booming for years. We hear a lot of stories of peaks such as competitive salaries, work-life balance, unlimited vacation one can get working in a tech company. But are the employees really happy with their jobs? What drives their satisfaction and what makes them to leave?
+I used data from Stackoverflow&rsquo;s 2017 Annual Developer Survey to investigate this problem.
+This survey has around 64000 reviews from 213 countries." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://shuyanmei.github.io/posts/third-post/" /><meta property="article:published_time" content="2018-09-05T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2018-09-05T00:00:00&#43;00:00"/>
+<meta itemprop="name" content="Are you satisfied with your job as a developer?">
+<meta itemprop="description" content="Introduction
+Tech industry has been booming for years. We hear a lot of stories of peaks such as competitive salaries, work-life balance, unlimited vacation one can get working in a tech company. But are the employees really happy with their jobs? What drives their satisfaction and what makes them to leave?
+I used data from Stackoverflow&rsquo;s 2017 Annual Developer Survey to investigate this problem.
+This survey has around 64000 reviews from 213 countries.">
+
+
+<meta itemprop="datePublished" content="2018-09-05T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-05T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="752">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Are you satisfied with your job as a developer?"/>
+<meta name="twitter:description" content="Introduction
+Tech industry has been booming for years. We hear a lot of stories of peaks such as competitive salaries, work-life balance, unlimited vacation one can get working in a tech company. But are the employees really happy with their jobs? What drives their satisfaction and what makes them to leave?
+I used data from Stackoverflow&rsquo;s 2017 Annual Developer Survey to investigate this problem.
+This survey has around 64000 reviews from 213 countries."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://shuyanmei.github.io" class="f3 fw2 hover-white no-underline white-90 dib">
+      SHUYAN
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="../../posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="../../about/" title="About page">
+              About
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Are you satisfied with your job as a developer?</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2018-09-05T00:00:00Z">September 5, 2018</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><p><strong>Introduction</strong></p>
+
+<p>Tech industry has been booming for years. We hear a lot of stories of peaks such as competitive salaries, work-life balance, unlimited vacation one can get working in a tech company.  But are the employees really happy with their jobs? What drives their satisfaction and what makes them to leave?</p>
+
+<p>I used data from Stackoverflow&rsquo;s 2017 Annual Developer Survey to investigate this problem.</p>
+
+<p>This survey has around 64000 reviews from 213 countries. The survey&rsquo;s responses are mostly collected from developers and the questions asked in the survey are related to many aspects of developer&rsquo;s job and career. Some of the aspects covered:</p>
+
+<p>1) How do they break into this field at the first place?<br />
+2) The developer&rsquo;s education, especially coding background<br />
+3) The developers&rsquo; job responsibility and satisfaction<br />
+4) What makes them to looking for new opportunity? What they value most when they look for the next position?<br />
+5) The developers&rsquo; interaction with Stackoverflow.</p>
+
+<p>Here I am interested in dig dive into data to figure out three problems.</p>
+
+<p><strong>Part I How satisfied are you as a developer ?</strong><br />
+There is one rating question in the survey asking about the job satisfaction. The answer is rated from 0-10 which 10 represents highly satisfied and 0 represents highly dissatisfied. I first filter out responses with NA values. Below is a table showing the response counts and percentage for each rating.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Job Satisfaction</th>
+<th align="center">Rating Counts</th>
+<th align="center">Percentage</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">8.0</td>
+<td align="center">8983</td>
+<td align="center">22.25%</td>
+</tr>
+
+<tr>
+<td align="center">7.0</td>
+<td align="center">7969</td>
+<td align="center">19.74%</td>
+</tr>
+
+<tr>
+<td align="center">9.0</td>
+<td align="center">5573</td>
+<td align="center">13.8%</td>
+</tr>
+
+<tr>
+<td align="center">6.0</td>
+<td align="center">4726</td>
+<td align="center">11.7%</td>
+</tr>
+
+<tr>
+<td align="center">10.0</td>
+<td align="center">4148</td>
+<td align="center">10.27%</td>
+</tr>
+
+<tr>
+<td align="center">5.0</td>
+<td align="center">3749</td>
+<td align="center">9.29%</td>
+</tr>
+
+<tr>
+<td align="center">4.0</td>
+<td align="center">1865</td>
+<td align="center">4.62%</td>
+</tr>
+
+<tr>
+<td align="center">3.0</td>
+<td align="center">1635</td>
+<td align="center">4.05%</td>
+</tr>
+
+<tr>
+<td align="center">2.0</td>
+<td align="center">888</td>
+<td align="center">2.2%</td>
+</tr>
+
+<tr>
+<td align="center">0.0</td>
+<td align="center">467</td>
+<td align="center">1.16%</td>
+</tr>
+
+<tr>
+<td align="center">1.0</td>
+<td align="center">373</td>
+<td align="center">0.92%</td>
+</tr>
+</tbody>
+</table>
+
+<p>Here, I used a metric called &lsquo;top 3 box&rsquo; to measure satisfaction. A Top 3 Box score summarizes the positive responses from a scale survey question. It combines the highest 3 responses of the scale to create one single number.</p>
+
+<p>Below plot shows the job satisfaction by country using the metric top 3 box. The countries I selected here have a response threshold of 500.<br />
+<img src="../../JSbyCty.png" alt="" /></p>
+
+<p>Top countries for satisfaction score are Netherlands, Canada,  Sweden and United States. All these four countries has over 50% top 3 box score.</p>
+
+<p>**Part II Does salary drive satisfaction? Is there anything else? **<br />
+There are many factors which can drive job satisfaction, such as salary, health benefits and vacation. To figure out does salary drives job satisfaction. I check the average salary of the top five countries which has the highest average salary.</p>
+
+<p>Below tables shows the average salary of these countries.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Country</th>
+<th align="center">Average Salary</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">United States</td>
+<td align="center">86862.40</td>
+</tr>
+
+<tr>
+<td align="center">Canada</td>
+<td align="center">60821.54</td>
+</tr>
+
+<tr>
+<td align="center">United Kingdom</td>
+<td align="center">56086.99</td>
+</tr>
+
+<tr>
+<td align="center">Germany</td>
+<td align="center">44121.32</td>
+</tr>
+
+<tr>
+<td align="center">India</td>
+<td align="center">11603.47</td>
+</tr>
+</tbody>
+</table>
+
+<p>The top countries with high average salaries also have a high job satisfaction (except India). Salary does have some impact on the job satisfaction. In addition to salary, does the benefits also influence employees&rsquo;s satisfaction?</p>
+
+<p>One of the survey&rsquo;s question is:</p>
+
+<blockquote>
+<p><em>When it comes to compensation and benefits, other than base salary, which of the following are most important to you?</em></p>
+</blockquote>
+
+<p>The following table shows the counts of each factors people think is most important to them.</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Important Benefits</th>
+<th align="center">Counts</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">Vacation/days off</td>
+<td align="center">5757</td>
+</tr>
+
+<tr>
+<td align="center">Health benefits</td>
+<td align="center">4455</td>
+</tr>
+
+<tr>
+<td align="center">Expected work hours</td>
+<td align="center">4288</td>
+</tr>
+
+<tr>
+<td align="center">Remote options</td>
+<td align="center">5008</td>
+</tr>
+
+<tr>
+<td align="center">Retirement</td>
+<td align="center">2658</td>
+</tr>
+
+<tr>
+<td align="center">Annual bonus</td>
+<td align="center">2983</td>
+</tr>
+
+<tr>
+<td align="center">Equipment</td>
+<td align="center">4002</td>
+</tr>
+
+<tr>
+<td align="center">Professional development sponsorship</td>
+<td align="center">3615</td>
+</tr>
+
+<tr>
+<td align="center">Stock options</td>
+<td align="center">1300</td>
+</tr>
+
+<tr>
+<td align="center">Child/elder care</td>
+<td align="center">694</td>
+</tr>
+
+<tr>
+<td align="center">Long-term leave</td>
+<td align="center">1240</td>
+</tr>
+
+<tr>
+<td align="center">Meals</td>
+<td align="center">1258</td>
+</tr>
+
+<tr>
+<td align="center">Other</td>
+<td align="center">247</td>
+</tr>
+
+<tr>
+<td align="center">Private office</td>
+<td align="center">872</td>
+</tr>
+
+<tr>
+<td align="center">Education sponsorship</td>
+<td align="center">1287</td>
+</tr>
+
+<tr>
+<td align="center">Charitable match</td>
+<td align="center">199</td>
+</tr>
+
+<tr>
+<td align="center">None of these</td>
+<td align="center">82</td>
+</tr>
+</tbody>
+</table>
+
+<p>The top three factosr are vacation, health benefits and expected work hours.</p>
+
+<p><strong>Part III Why people leaved their job?</strong><br />
+To figure out why people are leaving their job, I took a closer look at below question in the survey.</p>
+
+<blockquote>
+<p>*You said before that you used to code as part of your job, but no longer do. To what extent do you agree or disagree with the following statements? *</p>
+</blockquote>
+
+<p>The top three reasons for people to quit coding are:</p>
+
+<p>1) I don&rsquo;t think my coding skills are up to date<br />
+2) If money weren&rsquo;t an issue, I would take a coding job again<br />
+3) My career is going the way I thought it would 10 years ago</p>
+
+<p>and they counts for 17%, 17% and 15% of the total respectively.</p>
+
+<p>The technical skills is the most essential for developer. One need to keep updated for their coding skills. Just as important as coding skills, money also factors into developer&rsquo;s career decision. At the same time, some of the developers are looking for a career change and they do want to try out different things. That is also one reason they left their job.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://shuyanmei.github.io" >
+    &copy; 2018 SHUYAN
+  </a>
+  
+
+
+
+
+
+
+
+
+  </div>
+</footer>
+
+    
+
+  <script src="../../dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

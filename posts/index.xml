@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on SHUYAN</title>
+    <link>http://shuyanmei.github.io/posts/</link>
+    <description>Recent content in Posts on SHUYAN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 05 Sep 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://shuyanmei.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Are you satisfied with your job as a developer?</title>
+      <link>http://shuyanmei.github.io/posts/third-post/</link>
+      <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://shuyanmei.github.io/posts/third-post/</guid>
+      <description>Introduction
+Tech industry has been booming for years. We hear a lot of stories of peaks such as competitive salaries, work-life balance, unlimited vacation one can get working in a tech company. But are the employees really happy with their jobs? What drives their satisfaction and what makes them to leave?
+I used data from Stackoverflow&amp;rsquo;s 2017 Annual Developer Survey to investigate this problem.
+This survey has around 64000 reviews from 213 countries.</description>
+    </item>
+    
+    <item>
+      <title>Create A Dynamic Order Book with Python</title>
+      <link>http://shuyanmei.github.io/posts/second-post/</link>
+      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://shuyanmei.github.io/posts/second-post/</guid>
+      <description>An order book is an electronic list of buy and sells orders for a specific security or financial instrument, organized by price level. The order book lists the number of shares being bid or offered at each price point. A dynamic order book is constantly updated in real time based on orders received from market participants such as banks, proprietary trading firms and retail investors.
+Here I am trying to show how to create a dynamic order book with Python.</description>
+    </item>
+    
+    <item>
+      <title>Hello World!</title>
+      <link>http://shuyanmei.github.io/posts/heyyyy/</link>
+      <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://shuyanmei.github.io/posts/heyyyy/</guid>
+      <description>Hello, I finally got my first personal webpage set up!
+I will use this website to share some of my projects in statistics, machine learning or programming.
+This website is hosted on Github and I used Hugo and Ananke to set up.</description>
+    </item>
+    
+  </channel>
+</rss>
