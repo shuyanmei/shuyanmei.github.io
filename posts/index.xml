@@ -24,16 +24,6 @@ This survey has around 64000 reviews from 213 countries.</description>
     </item>
     
     <item>
-      <title>Create A Dynamic Order Book with Python</title>
-      <link>http://shuyanmei.github.io/posts/second-post/</link>
-      <pubDate>Sun, 26 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>http://shuyanmei.github.io/posts/second-post/</guid>
-      <description>An order book is an electronic list of buy and sells orders for a specific security or financial instrument, organized by price level. The order book lists the number of shares being bid or offered at each price point. A dynamic order book is constantly updated in real time based on orders received from market participants such as banks, proprietary trading firms and retail investors.
-Here I am trying to show how to create a dynamic order book with Python.</description>
-    </item>
-    
-    <item>
       <title>Hello World!</title>
       <link>http://shuyanmei.github.io/posts/heyyyy/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
