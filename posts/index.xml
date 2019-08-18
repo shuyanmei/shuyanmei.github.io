@@ -23,6 +23,7 @@ I used data from Stackoverflow&amp;rsquo;s 2017 Annual Developer Survey to inves
 This survey has around 64000 reviews from 213 countries.</description>
     </item>
     
+<<<<<<< HEAD
    <!--  <item>
       <title>Create A Dynamic Order Book with Python</title>
       <link>http://shuyanmei.github.io/posts/second-post/</link>
@@ -33,6 +34,8 @@ This survey has around 64000 reviews from 213 countries.</description>
 Here I am trying to show how to create a dynamic order book with Python.</description>
     </item> -->
     
+=======
+>>>>>>> 2b7dd75326e3695f359a3d9e4b390da2de667dcd
     <item>
       <title>Hello World!</title>
       <link>http://shuyanmei.github.io/posts/heyyyy/</link>
