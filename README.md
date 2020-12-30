@@ -1,3 +1,3 @@
 My personal [blog]. 
 
-[blog]: shuyanmei.github.io
+[blog]: https://shuyanmei.github.io/
