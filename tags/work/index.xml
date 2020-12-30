@@ -103,7 +103,7 @@ g(x,y)= c
 
 &lt;p&gt;where c is a constant.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;shuyanmei.github.io/lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;We want the coutour to barely touch the constraints. To do that, the vector perpendicular to the tangent line at that intersection point should go the same direction as the gradient of the constraint function.&lt;/p&gt;
 
