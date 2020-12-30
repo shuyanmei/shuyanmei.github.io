@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Optimization Learning Notes – Shuyan Mei</title>
+<meta name="description" content="  In the past year, I started to pick up some optimization algorithms in work to solve problems like finding optimal prices to maximize business&amp;#39; profits with …">
+<meta name="created" content="2020-12-28T16:28:27-0500">
+<meta name="modified" content="2020-12-28T16:28:27-0500">
+
+<meta name="contact" content="shuyanmei@gmail.com">
+<meta property="og:site_name" content="Shuyan Mei">
+<meta property="og:title" content="Optimization Learning Notes">
+<meta property="og:url" content="shuyanmei.github.io/documentation/optimization-notes/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="shuyanmei.github.io/apple-touch-icon.png">
+<meta name="generator" content="Hugo 0.79.1" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="shuyanmei.github.io/documentation/optimization-notes/">
+<link rel="apple-touch-icon" href="/shuyanmei.github.io/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/shuyanmei.github.io/css/mobile.2ab74aa64785dcab8114959e76ca140cf76207cd85989bc6d4fc3b12f734a09e.css" media="screen">
+<link rel="stylesheet" href="/shuyanmei.github.io/css/styles.159e5347492c734a666a2678db9a478c339b9ad376372e062cd19572540448a1.css">
+<link rel="stylesheet" href="/shuyanmei.github.io/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Optimization Learning Notes",
+    "datePublished": "2020-12-28T16:28:27-05:00",
+    "dateModified": "2020-12-28T16:28:27-05:00",
+    "url" : "shuyanmei.github.io/documentation/optimization-notes/",
+    "description": "  In the past year, I started to pick up some optimization algorithms in work to solve problems like finding optimal prices to maximize business\u0026#39; profits with …",
+    "keywords": ["work"],
+    "image" : "shuyanmei.github.io/apple-touch-icon.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "shuyanmei.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shuyan Mei",
+      "logo" : {
+        "@type": "ImageObject",
+        "url": "shuyanmei.github.io/apple-touch-icon.png"
+      },
+      "url": "shuyanmei.github.io"
+    }
+  }
+</script>
+
+<script src="/shuyanmei.github.io/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/shuyanmei.github.io/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/shuyanmei.github.io/js/mobile.min.3a3510028bab9810834389725137cfa50f5d3231799ef9ac70769331fa59859a.js"></script>
+<script defer src="/shuyanmei.github.io/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/shuyanmei.github.io/" title="Home" rel="home" class="header__logo"><img src="/shuyanmei.github.io/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/shuyanmei.github.io/" title="Home" class="header__site-link" rel="home"><span>Shuyan Mei</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="shuyanmei.github.io/">Home</a></li>
+<li><a href="shuyanmei.github.io/about/">About</a></li>
+<li><a href="shuyanmei.github.io/contact/">Contact</a></li>
+<li><a href="shuyanmei.github.io/search/">Search</a></li>
+<li><a href="shuyanmei.github.io/documentation/" class="active" aria-current="page">Articles</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-documentation single-view">
+<header>
+<h1 class="title title-submitted">Optimization Learning Notes</h1>
+<div class="submitted">
+<time class="created-date" datetime="2020-12-28T16:28:27-05:00">28 December, 2020</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/shuyanmei.github.io/tags/work">work</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js"></script></p>
+
+<p>In the past year, I started to pick up some optimization algorithms in work to solve problems like finding optimal prices to maximize business' profits with constraints. While memory is still fresh, I decided to write down my learning notes here. This is not an exhaustive survey of optimization algorithms, it only serves as the learning notes of the optimization algorithms which I have exposed so far.</p>
+
+<h2 id="optimization-overview">Optimization Overview</h2>
+
+<p>There are different ways to categorize the optimization algorithm. Depends on the objective function, we can have linear or non-linear optimization. Based on the input type, we can have numeric optimization and discrete optimization. There are optimizations with constraints and without any constraints. Depends on the number of objective functions, we can have single and multiple objective optimizations.</p>
+
+<h2 id="1-no-constraints-and-differentiable-objective-function">1. No constraints and differentiable objective function</h2>
+
+<p>The first scenario that comes to my mind is when we have a differentiable objective function without any constraints.</p>
+
+<h2 id="11-gradient-descent">1.1 Gradient Descent</h2>
+
+<p>When we are searching the values, Gradient descent tries to go in the direction such that the value of cost function f(x+\delta x) at the next step is smaller than the current one f(x).
+To find the direction of the movement, we take the derivative of the function at each step, assume the function is differentiable. Depends on how far we move each step, the algorithm can take a long time to converge, or even not converges.</p>
+
+<h2 id="12-newton-method">1.2 Newton Method</h2>
+
+<p>If the cost function is also twice differnetiable, then we can use newton method, and quasi newton method according to Taylor expansion.</p>
+
+<h4 id="taylor-expansion">Taylor Expansion</h4>
+
+<p>Given a real or complex twice differentiable function f, then the value at point <span  class="math">\(x_0\)</span> can be approximated as <span  class="math">\( f(x_0) + f'(x_0)(x-x_0) + \frac{1}{2}f'(x_0)(x-a)^2 \)</span></p>
+
+<p>The Newton Method, not only takes the direction of the movement but also the velocity(second derivative) into account. Therefore, using the Newton method is more efficient when updating each step. But sometimes we don't have the second derivative.</p>
+
+<h2 id="13-quasinewton-method">1.3 Quasi-Newton Method</h2>
+
+<p>To solve the problem of the newton method in the case we don't have the second derivative, Quasi-Newton can be used. The main difference is that Quasi-Newton uses an approximation of the second derivative to replace the derivative to do the computation.</p>
+
+<h2 id="14-why-not-use-an-analytical-solution">1.4 Why not use an analytical solution?</h2>
+
+<p>Consider that since we can take the derivatives, why not just set the derivative of the objective function as zero, and then solve analytically. One main reason is that sometimes we have a huge dataset and multiple variables, the computation time can be longer if we need to do matrix transformation, but gradient descent or the newton method is iterative, so it can be less expensive.</p>
+
+<h2 id="2-not-differentiable">2. Not differentiable?</h2>
+
+<p>In reality, we do not have such optimistic cases. Not every objective function is differentiable. Consider a discrete case below.</p>
+
+<h3 id="example-the-traveling-salesman">Example, the traveling salesman</h3>
+
+<p>The traveling salesman is a classical discrete optimization problem. The salesman starting from city A, and travel N cities, and only one time for each city, and eventually come back to city A, what is the shortest path?</p>
+
+<p>In this case, we can not find an analytical solution.
+The brute force solution is that we iterate all permutation which has a time complexity of O(N!). There are algorithms we can use here such as simulated annealing, GA, random hill climbing.</p>
+
+<p>I summarize the algorithms below. These algorithms can be effective in discrete cases.</p>
+
+<h2 id="21-genetic-algorithm">2.1 Genetic Algorithm</h2>
+
+<p>Genetic algorithm is one type of evolutionary algorithm. The algorithm uses the idea from biology to mimic natural selection.
+Take the traveling salesman as an example. The genetic algorithm first randomly generates a population (a set of routes), and then rank the routes by fitness, in this case, it is the shortest distance. The next step is to randomly select two routes as the 'parent route'
+and pass the elements in each parent route to make a 'child'. This process is known as crossover. To explore more possibilities, the final step is to perform mutation which is randomly select two cities in each parent route to swap with a predefined probability(say 3%)
+The child serves as the next generation and we repeat to full. Over time, it will generate a better(shorter distance) generation.</p>
+
+<p>Because of the mutation and crossover, We do not always reach the global optimal but can reach the local optimum fairly quickly.</p>
+
+<h2 id="22-simulated-annealing">2.2 Simulated Annealing</h2>
+
+<p>This algorithm's idea comes from annealing the metal. If we cool the meta fast, then the irons in the meta are randomly spread, but if we cool it slowly, then it will be more structured, and more stable.
+The algorithms work in the following way. We have an initial temperature, and in the next step, we evaluate the fitness of the route and decide whether to switch to the next possible route with a probability. The probability is associated with temperature. We decrease temperature over time, so we are less likely to back to the previous path. By doing this, we are less likely to be stuck at a local minimum. More likely to reach the global optimum.</p>
+
+<h2 id="23--hillclimbing-with-random-restart">2.3  Hill-Climbing with Random Restart</h2>
+
+<p>Hill climbing is straightforward as its name suggests.  We start with a random path and find the neighbor path, compare it with the current path to see if it is better, if it is, then we select the next path. The problem is also about stuck at a local minimum. Then we introduce random restart into it, so it does not get into local optimum.</p>
+
+<h2 id="3-optimization-with-constraints">3. Optimization with constraints</h2>
+
+<p>In reality, we usually have constraints when doing optimization. Based on the constraint type, there are different methods to optimize.</p>
+
+<h3 id="31-lagrange-multiplier-for-equality-constraint-only">3.1 Lagrange multiplier for Equality constraint only</h3>
+
+<p>If the constraint can be expressed as equality,  Then we can use Lagrange Multiplier to solve the algorithm. For example, a retail business wants to maximize its profits given certain constraints of the budget. The cost is labor and raw material. Revenue is a function of labor and raw material. In this scenario, we want to maximize the revenue function f. Let x, y denote the labor cost and raw material. Then both f and the cost function g are functions of x and y. We want to max out the budget, thus g(x,y) ideally should be equal to budget (c).</p>
+
+<p>The optimization problem can be formulated as the following.</p>
+
+<p><span  class="math">\[
+max f(x,y)
+\]</span></p>
+
+<p>given the constraint that
+<span  class="math">\(
+g(x,y)= c
+\)</span></p>
+
+<p>where c is a constant.</p>
+
+<p><img src="/lm.png" alt="drawing" width="400" height="400"/></p>
+
+<p>We want the coutour to barely touch the constraints. To do that, the vector perpendicular to the tangent line at that intersection point should go the same direction as the gradient of the constraint function.</p>
+
+<p>That is to say,</p>
+
+<p><span  class="math">\[
+\nabla f = \lambda \nabla g
+\]</span></p>
+
+<p>which is equivalent to</p>
+
+<p><span  class="math">\[
+\frac{\partial f}{\partial x}  = \lambda \frac{\partial g}{\partial x}
+\]</span></p>
+
+<p><span  class="math">\[ 
+\frac{\partial f}{\partial y}  = \lambda \frac{\partial g}{\partial y} 
+\]</span></p>
+
+<p>where  <span  class="math">\( \lambda \)</span> is a constant.
+Solve the equation above, we can get the value of x and y.</p>
+
+<h3 id="32-interior-point-method-for-inequality-constraints">3.2 Interior point method for inequality constraints</h3>
+
+<p>However, the above case is a very strict constraint. There are times we face an inequality constraint. In this case, we can use the interior point method such as the barrier function to convert it to a non-constrain problem and then solve it.</p>
+
+<h2 id="references">References</h2>
+
+<p>[1] <a href="https://en.wikipedia.org/wiki/Quasi-Newton_method">https://en.wikipedia.org/wiki/Quasi-Newton_method</a></p>
+
+<p>[2] <a href="https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1">https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1</a></p>
+
+<p>[3] <a href="https://en.wikipedia.org/wiki/Interior-point_method">https://en.wikipedia.org/wiki/Interior-point_method</a></p>
+
+<p><script>renderMathInElement(document.body);</script></p>
+
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="shuyanmei.github.io/documentation/" class="active" aria-current="page">Articles</a></h4>
+<ul class="menu">
+<li><a href="shuyanmei.github.io/documentation/optimization-notes/" class="active" aria-current="page">Optimization Learning Notes</a></li>
+<li><a href="shuyanmei.github.io/documentation/third-post/">Are you satisfied with your job as a developer?</a></li>
+<li><a href="shuyanmei.github.io/documentation/heyyyy/">Hello World!</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><!-- raw HTML omitted --></p>
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
+
+</footer>
+
+</div>
+<div class="mobile-nav" dir="ltr">
+  <div class="mobile-nav__cover"></div>
+  <a href="#navigation" class="mobile-nav__toggle" aria-haspopup="true" role="button">Menu</a>
+  <div class="mobile-nav__sheet">
+    <div class="mobile-nav__region">
+    
+    </div>
+    <nav class="mobile-nav__main-menu">
+    <h2 class="visually-hidden">Main menu</h2>
+    <ul class="mobile-nav__navbar">
+    <li><a href="shuyanmei.github.io/">Home</a></li>
+    <li><a href="shuyanmei.github.io/about/">About</a></li>
+    <li><a href="shuyanmei.github.io/contact/">Contact</a></li>
+    <li><a href="shuyanmei.github.io/search/">Search</a></li>
+    <li><a href="shuyanmei.github.io/documentation/" class="active" aria-current="page">Articles</a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>work on Shuyan Mei</title>
+    <link>shuyanmei.github.io/tags/work/</link>
+    <description>Recent content in work on Shuyan Mei</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 28 Dec 2020 16:28:27 -0500</lastBuildDate>
+    <atom:link href="shuyanmei.github.io/tags/work/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Optimization Learning Notes</title>
+      <link>shuyanmei.github.io/documentation/optimization-notes/</link>
+      <pubDate>Mon, 28 Dec 2020 16:28:27 -0500</pubDate>
+      <guid>shuyanmei.github.io/documentation/optimization-notes/</guid>
+      <description>&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css&#34;&gt;
+  &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js&#34;&gt;&lt;/script&gt;
+  &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;In the past year, I started to pick up some optimization algorithms in work to solve problems like finding optimal prices to maximize business&#39; profits with constraints. While memory is still fresh, I decided to write down my learning notes here. This is not an exhaustive survey of optimization algorithms, it only serves as the learning notes of the optimization algorithms which I have exposed so far.&lt;/p&gt;
+
+&lt;h2 id=&#34;optimization-overview&#34;&gt;Optimization Overview&lt;/h2&gt;
+
+&lt;p&gt;There are different ways to categorize the optimization algorithm. Depends on the objective function, we can have linear or non-linear optimization. Based on the input type, we can have numeric optimization and discrete optimization. There are optimizations with constraints and without any constraints. Depends on the number of objective functions, we can have single and multiple objective optimizations.&lt;/p&gt;
+
+&lt;h2 id=&#34;1-no-constraints-and-differentiable-objective-function&#34;&gt;1. No constraints and differentiable objective function&lt;/h2&gt;
+
+&lt;p&gt;The first scenario that comes to my mind is when we have a differentiable objective function without any constraints.&lt;/p&gt;
+
+&lt;h2 id=&#34;11-gradient-descent&#34;&gt;1.1 Gradient Descent&lt;/h2&gt;
+
+&lt;p&gt;When we are searching the values, Gradient descent tries to go in the direction such that the value of cost function f(x+\delta x) at the next step is smaller than the current one f(x).
+To find the direction of the movement, we take the derivative of the function at each step, assume the function is differentiable. Depends on how far we move each step, the algorithm can take a long time to converge, or even not converges.&lt;/p&gt;
+
+&lt;h2 id=&#34;12-newton-method&#34;&gt;1.2 Newton Method&lt;/h2&gt;
+
+&lt;p&gt;If the cost function is also twice differnetiable, then we can use newton method, and quasi newton method according to Taylor expansion.&lt;/p&gt;
+
+&lt;h4 id=&#34;taylor-expansion&#34;&gt;Taylor Expansion&lt;/h4&gt;
+
+&lt;p&gt;Given a real or complex twice differentiable function f, then the value at point &lt;span  class=&#34;math&#34;&gt;\(x_0\)&lt;/span&gt; can be approximated as &lt;span  class=&#34;math&#34;&gt;\( f(x_0) + f&#39;(x_0)(x-x_0) + \frac{1}{2}f&#39;(x_0)(x-a)^2 \)&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;The Newton Method, not only takes the direction of the movement but also the velocity(second derivative) into account. Therefore, using the Newton method is more efficient when updating each step. But sometimes we don&#39;t have the second derivative.&lt;/p&gt;
+
+&lt;h2 id=&#34;13-quasinewton-method&#34;&gt;1.3 Quasi-Newton Method&lt;/h2&gt;
+
+&lt;p&gt;To solve the problem of the newton method in the case we don&#39;t have the second derivative, Quasi-Newton can be used. The main difference is that Quasi-Newton uses an approximation of the second derivative to replace the derivative to do the computation.&lt;/p&gt;
+
+&lt;h2 id=&#34;14-why-not-use-an-analytical-solution&#34;&gt;1.4 Why not use an analytical solution?&lt;/h2&gt;
+
+&lt;p&gt;Consider that since we can take the derivatives, why not just set the derivative of the objective function as zero, and then solve analytically. One main reason is that sometimes we have a huge dataset and multiple variables, the computation time can be longer if we need to do matrix transformation, but gradient descent or the newton method is iterative, so it can be less expensive.&lt;/p&gt;
+
+&lt;h2 id=&#34;2-not-differentiable&#34;&gt;2. Not differentiable?&lt;/h2&gt;
+
+&lt;p&gt;In reality, we do not have such optimistic cases. Not every objective function is differentiable. Consider a discrete case below.&lt;/p&gt;
+
+&lt;h3 id=&#34;example-the-traveling-salesman&#34;&gt;Example, the traveling salesman&lt;/h3&gt;
+
+&lt;p&gt;The traveling salesman is a classical discrete optimization problem. The salesman starting from city A, and travel N cities, and only one time for each city, and eventually come back to city A, what is the shortest path?&lt;/p&gt;
+
+&lt;p&gt;In this case, we can not find an analytical solution.
+The brute force solution is that we iterate all permutation which has a time complexity of O(N!). There are algorithms we can use here such as simulated annealing, GA, random hill climbing.&lt;/p&gt;
+
+&lt;p&gt;I summarize the algorithms below. These algorithms can be effective in discrete cases.&lt;/p&gt;
+
+&lt;h2 id=&#34;21-genetic-algorithm&#34;&gt;2.1 Genetic Algorithm&lt;/h2&gt;
+
+&lt;p&gt;Genetic algorithm is one type of evolutionary algorithm. The algorithm uses the idea from biology to mimic natural selection.
+Take the traveling salesman as an example. The genetic algorithm first randomly generates a population (a set of routes), and then rank the routes by fitness, in this case, it is the shortest distance. The next step is to randomly select two routes as the &#39;parent route&#39;
+and pass the elements in each parent route to make a &#39;child&#39;. This process is known as crossover. To explore more possibilities, the final step is to perform mutation which is randomly select two cities in each parent route to swap with a predefined probability(say 3%)
+The child serves as the next generation and we repeat to full. Over time, it will generate a better(shorter distance) generation.&lt;/p&gt;
+
+&lt;p&gt;Because of the mutation and crossover, We do not always reach the global optimal but can reach the local optimum fairly quickly.&lt;/p&gt;
+
+&lt;h2 id=&#34;22-simulated-annealing&#34;&gt;2.2 Simulated Annealing&lt;/h2&gt;
+
+&lt;p&gt;This algorithm&#39;s idea comes from annealing the metal. If we cool the meta fast, then the irons in the meta are randomly spread, but if we cool it slowly, then it will be more structured, and more stable.
+The algorithms work in the following way. We have an initial temperature, and in the next step, we evaluate the fitness of the route and decide whether to switch to the next possible route with a probability. The probability is associated with temperature. We decrease temperature over time, so we are less likely to back to the previous path. By doing this, we are less likely to be stuck at a local minimum. More likely to reach the global optimum.&lt;/p&gt;
+
+&lt;h2 id=&#34;23--hillclimbing-with-random-restart&#34;&gt;2.3  Hill-Climbing with Random Restart&lt;/h2&gt;
+
+&lt;p&gt;Hill climbing is straightforward as its name suggests.  We start with a random path and find the neighbor path, compare it with the current path to see if it is better, if it is, then we select the next path. The problem is also about stuck at a local minimum. Then we introduce random restart into it, so it does not get into local optimum.&lt;/p&gt;
+
+&lt;h2 id=&#34;3-optimization-with-constraints&#34;&gt;3. Optimization with constraints&lt;/h2&gt;
+
+&lt;p&gt;In reality, we usually have constraints when doing optimization. Based on the constraint type, there are different methods to optimize.&lt;/p&gt;
+
+&lt;h3 id=&#34;31-lagrange-multiplier-for-equality-constraint-only&#34;&gt;3.1 Lagrange multiplier for Equality constraint only&lt;/h3&gt;
+
+&lt;p&gt;If the constraint can be expressed as equality,  Then we can use Lagrange Multiplier to solve the algorithm. For example, a retail business wants to maximize its profits given certain constraints of the budget. The cost is labor and raw material. Revenue is a function of labor and raw material. In this scenario, we want to maximize the revenue function f. Let x, y denote the labor cost and raw material. Then both f and the cost function g are functions of x and y. We want to max out the budget, thus g(x,y) ideally should be equal to budget (c).&lt;/p&gt;
+
+&lt;p&gt;The optimization problem can be formulated as the following.&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+max f(x,y)
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;given the constraint that
+&lt;span  class=&#34;math&#34;&gt;\(
+g(x,y)= c
+\)&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;where c is a constant.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;shuyanmei.github.io/lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;We want the coutour to barely touch the constraints. To do that, the vector perpendicular to the tangent line at that intersection point should go the same direction as the gradient of the constraint function.&lt;/p&gt;
+
+&lt;p&gt;That is to say,&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\nabla f = \lambda \nabla g
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;which is equivalent to&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[
+\frac{\partial f}{\partial x}  = \lambda \frac{\partial g}{\partial x}
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ 
+\frac{\partial f}{\partial y}  = \lambda \frac{\partial g}{\partial y} 
+\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;where  &lt;span  class=&#34;math&#34;&gt;\( \lambda \)&lt;/span&gt; is a constant.
+Solve the equation above, we can get the value of x and y.&lt;/p&gt;
+
+&lt;h3 id=&#34;32-interior-point-method-for-inequality-constraints&#34;&gt;3.2 Interior point method for inequality constraints&lt;/h3&gt;
+
+&lt;p&gt;However, the above case is a very strict constraint. There are times we face an inequality constraint. In this case, we can use the interior point method such as the barrier function to convert it to a non-constrain problem and then solve it.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;https://en.wikipedia.org/wiki/Quasi-Newton_method&#34;&gt;https://en.wikipedia.org/wiki/Quasi-Newton_method&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&#34;https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1&#34;&gt;https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/lagrange-multipliers-and-constrained-optimization/v/lagrange-multiplier-example-part-1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3] &lt;a href=&#34;https://en.wikipedia.org/wiki/Interior-point_method&#34;&gt;https://en.wikipedia.org/wiki/Interior-point_method&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;script&gt;renderMathInElement(document.body);&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
