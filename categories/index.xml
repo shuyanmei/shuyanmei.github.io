@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Shuyan Mei</title>
-    <link>shuyanmei.github.io/categories/</link>
+    <link>https://shuyanmei.github.io/categories/</link>
     <description>Recent content in Categories on Shuyan Mei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
-    <atom:link href="shuyanmei.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shuyanmei.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>

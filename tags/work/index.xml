@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>work on Shuyan Mei</title>
-    <link>shuyanmei.github.io/tags/work/</link>
+    <link>https://shuyanmei.github.io/tags/work/</link>
     <description>Recent content in work on Shuyan Mei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
     <lastBuildDate>Mon, 28 Dec 2020 16:28:27 -0500</lastBuildDate>
-    <atom:link href="shuyanmei.github.io/tags/work/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shuyanmei.github.io/tags/work/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Optimization Learning Notes</title>
-      <link>shuyanmei.github.io/documentation/optimization-notes/</link>
+      <link>https://shuyanmei.github.io/documentation/optimization-notes/</link>
       <pubDate>Mon, 28 Dec 2020 16:28:27 -0500</pubDate>
-      <guid>shuyanmei.github.io/documentation/optimization-notes/</guid>
+      <guid>https://shuyanmei.github.io/documentation/optimization-notes/</guid>
       <description>&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css&#34;&gt;
   &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js&#34;&gt;&lt;/script&gt;
   &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
@@ -103,7 +103,7 @@ g(x,y)= c
 
 &lt;p&gt;where c is a constant.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../../lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://shuyanmei.github.io/lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;We want the coutour to barely touch the constraints. To do that, the vector perpendicular to the tangent line at that intersection point should go the same direction as the gradient of the constraint function.&lt;/p&gt;
 

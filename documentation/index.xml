@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles on Shuyan Mei</title>
-    <link>shuyanmei.github.io/documentation/</link>
+    <link>https://shuyanmei.github.io/documentation/</link>
     <description>Recent content in Articles on Shuyan Mei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
     <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate>
-    <atom:link href="shuyanmei.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://shuyanmei.github.io/documentation/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Optimization Learning Notes</title>
-      <link>shuyanmei.github.io/documentation/optimization-notes/</link>
+      <link>https://shuyanmei.github.io/documentation/optimization-notes/</link>
       <pubDate>Mon, 28 Dec 2020 16:28:27 -0500</pubDate>
-      <guid>shuyanmei.github.io/documentation/optimization-notes/</guid>
+      <guid>https://shuyanmei.github.io/documentation/optimization-notes/</guid>
       <description>&lt;p&gt;&lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css&#34;&gt;
   &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js&#34;&gt;&lt;/script&gt;
   &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/contrib/auto-render.min.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
@@ -103,7 +103,7 @@ g(x,y)= c
 
 &lt;p&gt;where c is a constant.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;../lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://shuyanmei.github.io/lm.png&#34; alt=&#34;drawing&#34; width=&#34;400&#34; height=&#34;400&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;We want the coutour to barely touch the constraints. To do that, the vector perpendicular to the tangent line at that intersection point should go the same direction as the gradient of the constraint function.&lt;/p&gt;
 
@@ -144,10 +144,10 @@ Solve the equation above, we can get the value of x and y.&lt;/p&gt;
     
     <item>
       <title>Are you satisfied with your job as a developer?</title>
-      <link>shuyanmei.github.io/documentation/third-post/</link>
+      <link>https://shuyanmei.github.io/documentation/third-post/</link>
       <pubDate>Wed, 05 Sep 2018 00:00:00 +0000</pubDate>
-      <guid>shuyanmei.github.io/documentation/third-post/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;../stackoverflow.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+      <guid>https://shuyanmei.github.io/documentation/third-post/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://shuyanmei.github.io/stackoverflow.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Introduction&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Tech industry has been booming for years. We hear a lot of stories of peaks such as competitive salaries, work-life balance, unlimited vacation one can get working in a tech company.  But are the employees really happy with their jobs? What drives their satisfaction and what makes them to leave?&lt;/p&gt;
 &lt;p&gt;I used data from Stackoverflow&amp;rsquo;s 2017 Annual Developer Survey to investigate this problem.&lt;/p&gt;
@@ -230,7 +230,7 @@ There is one rating question in the survey asking about the job satisfaction. Th
 &lt;/table&gt;
 &lt;p&gt;Here, I used a metric called &amp;lsquo;top 3 box&amp;rsquo; to measure satisfaction. A Top 3 Box score summarizes the positive responses from a scale survey question. It combines the highest 3 responses of the scale to create one single number.&lt;/p&gt;
 &lt;p&gt;Below plot shows the job satisfaction by country using the metric top 3 box. The countries I selected here have a response threshold of 500.
-&lt;img src=&#34;../JSbyCty.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://shuyanmei.github.io/JSbyCty.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Top countries for satisfaction score are Netherlands, Canada,  Sweden and United States. All these four countries has over 50% top 3 box score.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Part II Does salary drive satisfaction? Is there anything else?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;There are many factors which can drive job satisfaction, such as salary, health benefits and vacation. To figure out does salary drives job satisfaction. I check the average salary of the top five countries which has the highest average salary.&lt;/p&gt;
@@ -368,9 +368,9 @@ To figure out why people are leaving their job, I took a closer look at below qu
     
     <item>
       <title>Hello World!</title>
-      <link>shuyanmei.github.io/documentation/heyyyy/</link>
+      <link>https://shuyanmei.github.io/documentation/heyyyy/</link>
       <pubDate>Sat, 25 Aug 2018 00:00:00 +0000</pubDate>
-      <guid>shuyanmei.github.io/documentation/heyyyy/</guid>
+      <guid>https://shuyanmei.github.io/documentation/heyyyy/</guid>
       <description>&lt;p&gt;Hello, I finally got my first personal webpage set up!&lt;/p&gt;
 &lt;p&gt;I will use this website to share some of my projects in statistics, machine learning or programming.&lt;/p&gt;
 &lt;p&gt;This website is hosted on Github and I used &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/%22Hugo%22&#34;&gt;Hugo&lt;/a&gt; and &lt;a href=&#34;https://themes.gohugo.io/gohugo-theme-ananke/&#34;&gt;Ananke&lt;/a&gt; to set up.&lt;/p&gt;
