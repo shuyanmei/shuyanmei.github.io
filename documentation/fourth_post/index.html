@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>A Summary of Book Trustworthy Online Controlled Experiments – Shuyan Mei</title>
+<meta name="description" content="Recently I finished reading the book Trustworthy Online Controlled Experiments, and here I put together my reading notes. The book has five parts. The first two parts are …">
+<meta name="created" content="2021-01-18T14:48:25-0500">
+<meta name="modified" content="2021-01-18T14:48:25-0500">
+
+<meta name="contact" content="shuyanmei@gmail.com">
+<meta property="og:site_name" content="Shuyan Mei">
+<meta property="og:title" content="A Summary of Book Trustworthy Online Controlled Experiments">
+<meta property="og:url" content="https://shuyanmei.github.io/documentation/fourth_post/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://shuyanmei.github.io/apple-touch-icon.png">
+<meta name="generator" content="Hugo 0.79.1" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://shuyanmei.github.io/documentation/fourth_post/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/css/mobile.2ab74aa64785dcab8114959e76ca140cf76207cd85989bc6d4fc3b12f734a09e.css" media="screen">
+<link rel="stylesheet" href="/css/styles.159e5347492c734a666a2678db9a478c339b9ad376372e062cd19572540448a1.css">
+<link rel="stylesheet" href="/css/print.27fc184f8670f41a2690985390779e7b20335a8fadff8fa015cf9417ffe50c36.css" media="print">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "A Summary of Book Trustworthy Online Controlled Experiments",
+    "datePublished": "2021-01-18T14:48:25-05:00",
+    "dateModified": "2021-01-18T14:48:25-05:00",
+    "url" : "https://shuyanmei.github.io/documentation/fourth_post/",
+    "description": "Recently I finished reading the book Trustworthy Online Controlled Experiments, and here I put together my reading notes. The book has five parts. The first two parts are …",
+    "keywords": ["work"],
+    "image" : "https://shuyanmei.github.io/apple-touch-icon.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://shuyanmei.github.io/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Shuyan Mei",
+      "logo" : {
+        "@type": "ImageObject",
+        "url": "https://shuyanmei.github.io/apple-touch-icon.png"
+      },
+      "url": "https://shuyanmei.github.io/"
+    }
+  }
+</script>
+
+<script src="/js/script-early.min.a8d899ac88f2a778985767b86ce681945e3fa2069c3c9efd17e5e5b594d3ba1f.js"></script>
+<script defer src="/js/lib/umbrella.min.6e17830ccdded0a13b96d6993865b58202bc2ee750e5892a51858ab048b2bebb.js"></script>
+<script defer src="/js/mobile.min.3a3510028bab9810834389725137cfa50f5d3231799ef9ac70769331fa59859a.js"></script>
+<script defer src="/js/script.min.f7f56769569fdf7a80d073b6775c6cd9ed8ae528864cd3f2aa1c8c3fe73f87ea.js"></script>
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<a href="/" title="Home" rel="home" class="header__logo"><img src="/images/logo.png" alt="Home" class="header__logo-image"></a>
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Shuyan Mei</span></a>
+</h1>
+<div class="region header__region">
+</div>
+</header>
+
+<nav class="main-menu layout__navigation">
+<h2 class="visually-hidden">Main menu</h2>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/about/">About</a></li>
+<li><a href="/contact/">Contact</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/documentation/" class="active" aria-current="page">Articles</a></li>
+</ul>
+</nav>
+
+
+<main class="main layout__main">
+<article class="section-documentation single-view">
+<header>
+<h1 class="title title-submitted">A Summary of Book Trustworthy Online Controlled Experiments</h1>
+<div class="submitted">
+<time class="created-date" datetime="2021-01-18T14:48:25-05:00">18 January, 2021</time>
+</div>
+<div class="tags">
+Tags:
+<ul>
+<li><a href="/tags/work">work</a></li>
+</ul>
+</div>
+</header>
+<div class="content">
+<p>Recently I finished reading the book Trustworthy Online Controlled Experiments, and here I put together my reading notes.</p>
+<p>The book has five parts. The first two parts are a high-level introduction of online controlled experiments. Why do we need to conduct controlled experiments? What is the evaluation metric for the experiments? The last three parts are more technically focused. The third part introduces some alternative methods when controlled experiments are not feasible. The fourth part focused on building the experimental platform. The last part mainly focused on how to analyze results from our experiments, what are the potential pitfalls and methods to improve it.</p>
+<h1 id="1-why-should-we-use-ab-testing">1. Why should we use A/B Testing?</h1>
+<p>Imagine we introduce a new feature into our online service, and we see an increase in traffic. Can we claim that if we roll out the feature to all customers can increase user engagement? Not necessarily. The feature can be positively or negatively correlated with traffic or have nothing to do with traffic. A/B testing can help with establishing causality with high confidence, have more power to detect small/unexpected changes.</p>
+<h1 id="2-how-to-design-the-experiment">2. How to design the experiment?</h1>
+<h2 id="21-create-metric-based-on-objective">2.1 Create metric based on objective</h2>
+<p>In reality, we usually have more than one business metric to use in experimental design. These metrics must be measurable, attributable, sensitive, and timely. One way to combine multiple metrics is to normalize each metric and then create a weighted combination of them, such as credit score. To decide how many metrics to use, one rough rule of thumb is to limit the number of metrics to five. Because of multiple testing problem, if we have too many metrics, the probability of seeing a significant result is high.</p>
+<h2 id="22-aa-test">2.2 A/A test</h2>
+<h3 id="why-we-need-aa-test">Why we need A/A test?</h3>
+<p>A/A test is almost the same as the A/B test, but the treatment and control group receive the same treatment.
+Some benefits of running the A/A test.</p>
+<ol>
+<li>Ensure no bias between the treatment and control group. For example, if we use the same users in the last experiment in the current experiment, there might be residual effects, tests from the last experiment can influence the current experiment.</li>
+<li>Assess metric variability. If we have more and more data over time, we want to see how the data distribution change over time.</li>
+</ol>
+<h3 id="how-to-run-aa-test">How to run A/A test?</h3>
+<p>Simulate thousands of experiments, check if the distribution of p-value is uniform. Sometimes running thousands of tests can be expensive. One workaround is to use data from the previous experiment. For example, we stored the experiment results from last week, and then reassign the user into the treatment and control group, and then calculate the p-value. To check if the distribution follows a uniform distribution, we can run the goodness-of-fit test such as Anderson-Darling and Kolmogorov–Smirnov (KS) to check if it follows a uniform distribution.</p>
+<h3 id="aa-test-fails">A/A test fails?</h3>
+<p>The reason could be outliers in the data or
+metric has a highly skewed distribution. In this case, we can cap the data.</p>
+<h2 id="23-choose-significance-level-power">2.3 Choose significance level, power</h2>
+<p>The significance level is the one we compare with the p-value, if the p-value is less than the significance level, then we can say that the p-value is significant, which means that we should reject the null hypothesis.</p>
+<p>Power is the probability the test can detect the significance difference(positive) when it is actually positive.</p>
+<h2 id="24-calculate-sample-size">2.4 Calculate sample size</h2>
+<p>Based on the power and significance level, we can calculate the sample size we need for the experiment.</p>
+<p>Besides, to play around with significance level and power, we can also transform or cap the metric to change the required sample size.</p>
+<p>For metrics that have higher skewness, if we do some transformation or cap it. Then the required sample size will be reduced.</p>
+<h2 id="25-decide-timepopulationunit-to-run-the-experiments">2.5 Decide time/population/unit to run the experiments</h2>
+<p>Since some users will only visit the website once in the online experiment, thus duration is also important when considering sample size.</p>
+<p>The usual approach is the randomization unit and analysis unit are the same. One example is the randomization unit is user, and the analysis unit is click-per-user, then the calculation is easier to compute.  But if the randomization unit is different than the analysis unit, for example, if the randomization unit is user, but the analysis unit is click-through-rate-per-page, then if a bot exists, it can generate thousands of page view using one user ID, in this case, we can limit the number of page-view per user to avoid such outliers. We need to use the bootstrap and delta method.</p>
+<p>The most common one is user-based randomization. We can track it by user login-ID, cookie ID.</p>
+<h2 id="26-analyze-results">2.6 Analyze results</h2>
+<h3 id="irrelevant-metric-significant-multiple-testing-problem">Irrelevant metric significant: multiple testing problem</h3>
+<p>When we run thousands of tests, or on different metrics, it is likely we get significant results even they do not make sense. This is also known as the multiple testing problem. One solution is to separate metrics into different tiers. For each tier, we give them a different significance level.
+Another common solution to the multiple testing problem is Bonferroni correction.</p>
+<h3 id="improve-powersensitivity">Improve power/sensitivity</h3>
+<ol>
+<li>Choose the metric that has a smaller variance</li>
+<li>Transform metric through cap, binarization, log transformation.</li>
+<li>Triggered analysis</li>
+<li>Stratification</li>
+<li>Randomization at a more granular level</li>
+<li>Paired experiment</li>
+<li>Pool control groups</li>
+</ol>
+<h3 id="sample-ratio-mismatch-srm">Sample Ratio Mismatch (SRM)</h3>
+<p>SRM is a guardrail metric that ensures the validity of the experiment results. When we set up the experiment, we have a ratio of users between the treatment and control group, the experimental results should close to the experimental design ratio. When the p-value from the t-test or chi-square test is low, then there is a problem of SRM. The metrics we used are likely to be invalid.</p>
+<h3 id="novelty-effects">Novelty effects</h3>
+<p>When the new feature introduced, users might be uses a lot due to it is new, and as time goes by, the users might use it much less. One way to detect this is to plot usage over time.</p>
+<h1 id="3-when-is-ab-testing-not-a-good-idea">3. When is AB testing not a good idea?</h1>
+<p>There are cases when A/B testing is not working.</p>
+<h3 id="1-we-can-not-control-user-behavior">1. We can not control user behavior.</h3>
+<p>For example, we can not control certain user behavior. such as ask the user to switch their phone.</p>
+<h3 id="2-high-opportunity-cost">2. High opportunity cost</h3>
+<p>If users do not receive treatment, we might lose money. For example, we want to run the ad on the event only happens once a year.</p>
+<h3 id="3-leakage-and-interference-between-variants">3. Leakage and Interference between variants</h3>
+<p>If the users are interacting with each other, also known as the network effect, then control and treatment groups are not independent. In this case, we need to create isolation to make sure that the units in the treatment and control group are independent. For example, we can use geometric-based isolation when conducting design on a social network.</p>
+<h3 id="4-experiments-require-a-long-time-to-take-effects">4. Experiments require a long time to take effects</h3>
+<p>There are some experiments that require a longer time to run. The long term and short term effect can be different. Below are several reasons.</p>
+<p>User-learned effect: The user might need a longer time to learn the new feature.</p>
+<p>Delayed effect: There is a large time gap between the feature launch to the time the treatment takes effect. For example, there could be months between a customer book a hotel to actually go there.</p>
+<p>Network effect: For example, in a two-sided marketplace, introduce a new feature can increase the demand, but the supply needs time to catch up, thus the treatment effects take longer to measure.</p>
+<p>Ecosystem change: Policy changes, seasonality, competitor&rsquo;s similar features.</p>
+<p>Keep the experiment running for a long time can introduce survivor bias, and the feature can also interact with other new features as time evolves.</p>
+<p>Alternative methods such as cohort analysis, the reverse experiment can be used to measure the long-term effect.</p>
+<h1 id="4-alternative-methods-when-ab-testing-is-expensive-or-not-feasible">4. Alternative methods when AB testing is expensive or not feasible</h1>
+<p>The observational causal study is one method when the controlled experiment is not feasible.</p>
+<h2 id="41-observational-causal-study">4.1 observational causal study</h2>
+<p>Outcome for treated -Outcome for untreated
+= Outcome for treated - Outcome for treated if not treated +
+Outcome for treated if not treated - Outcome for untreated if treated
+= Impact of treatment on treated + Selection Bias</p>
+<p>If it is a randomized controlled experiment, then the expected value of selection bias is zero. But in cases mentioned in part 4, it is not. That is why causal study comes into play. In contrast to A/B testing, the causal study has no randomized assignment on the unit, it looks at historical data. Though both causal study and retrospective data analysis are using historical study. The goals are different, the goal of the causal study is to find the causality relationship.</p>
+<h3 id="methods">Methods</h3>
+<h4 id="1-interrupted-time-series-its">1. Interrupted time series (ITS)</h4>
+<p>ITS is a quasi-experimental design, which we can control the change, but not randomize the unit. We test the treatment/control of the same population over time. The main confounding effect is the time-based effect such as seasonality.</p>
+<h4 id="2-interleaved-experiment">2. Interleaved experiment</h4>
+<p>Interleaved experiment is commonly used to evaluate the ranking algorithm. One example is to mix results from two algorithms, and then compare the click-through-rate from two algorithms.</p>
+<h4 id="3-regression-discontinuity-design-rdd">3. Regression Discontinuity Design (RDD)</h4>
+<p>RDD is commonly used when there is a clear threshold that identifies the treatment group. We select the group which has a threshold right above the threshold as the treatment group, and those with a threshold right below the threshold as the control group. By doing this, it can reduce selection bias. One main issue of RDD is again the confounding effects. The results can be contaminated if there is another important factor that has the same threshold. For example, if we want to test the alcohol assumption at legal drinking age 21, but gambling legal age is also 21.</p>
+<h4 id="4-instrumental-variableiv-and-natural-experiment">4. Instrumental variable(IV) and Natural Experiment</h4>
+<p>IV approximate the random assignment.  For example, to compare the earnings between Veterans, an instrument can be the Vietnam war draft lottery. Natural experiment
+, such as twins in twins medicine study.</p>
+<h4 id="5-propensity-score-matching">5. Propensity score matching</h4>
+<p>Similar to stratified sampling, PSM segment users into groups by matching on a constructed propensity score.</p>
+<h4 id="6-difference-in-difference-dd">6. Difference in difference (DD)</h4>
+<p>We make a treatment to treatment group at a certain time T, and then we note the difference of treatment group before and after time T, compare it with the difference of control group before and after time T. The difference in the control group over time can capture external factors such as seasonality, inflation.</p>
+<h3 id="pitfalls">Pitfalls</h3>
+<p>Confounding effects and deceptive correlations are common pitfalls in observational causal studies.</p>
+<h2 id="42-more-methods">4.2 More methods</h2>
+<ol>
+<li>User experience research</li>
+<li>Focus group</li>
+<li>Survey</li>
+<li>Log-based analysis</li>
+</ol>
+<p>The methods above can also be used when A/B testing is not feasible or expensive to run.</p>
+<h1 id="references">References:</h1>
+<p>Kohavi, R., Tang, D., &amp; Xu, Y. (2020). Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. Cambridge: Cambridge University Press. doi:10.1017/9781108653985</p>
+
+
+</div>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section>
+<h4 class="menu"><a href="/documentation/" class="active" aria-current="page">Articles</a></h4>
+<ul class="menu">
+<li><a href="/documentation/fourth_post/" class="active" aria-current="page">A Summary of Book Trustworthy Online Controlled Experiments</a></li>
+<li><a href="/documentation/optimization-notes/">Optimization Learning Notes</a></li>
+<li><a href="/documentation/third-post/">Are you satisfied with your job as a developer?</a></li>
+<li><a href="/documentation/heyyyy/">Hello World!</a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer">
+<p><!-- raw HTML omitted --></p>
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
+
+</footer>
+
+</div>
+<div class="mobile-nav" dir="ltr">
+  <div class="mobile-nav__cover"></div>
+  <a href="#navigation" class="mobile-nav__toggle" aria-haspopup="true" role="button">Menu</a>
+  <div class="mobile-nav__sheet">
+    <div class="mobile-nav__region">
+    
+    </div>
+    <nav class="mobile-nav__main-menu">
+    <h2 class="visually-hidden">Main menu</h2>
+    <ul class="mobile-nav__navbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="/search/">Search</a></li>
+    <li><a href="/documentation/" class="active" aria-current="page">Articles</a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</body>
+</html>

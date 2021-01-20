@@ -6,8 +6,115 @@
     <description>Recent content in Welcome on Shuyan Mei</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
-    <lastBuildDate>Mon, 28 Dec 2020 16:28:27 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 18 Jan 2021 14:48:25 -0500</lastBuildDate>
     <atom:link href="https://shuyanmei.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A Summary of Book Trustworthy Online Controlled Experiments</title>
+      <link>https://shuyanmei.github.io/documentation/fourth_post/</link>
+      <pubDate>Mon, 18 Jan 2021 14:48:25 -0500</pubDate>
+      <guid>https://shuyanmei.github.io/documentation/fourth_post/</guid>
+      <description>&lt;p&gt;Recently I finished reading the book Trustworthy Online Controlled Experiments, and here I put together my reading notes.&lt;/p&gt;
+&lt;p&gt;The book has five parts. The first two parts are a high-level introduction of online controlled experiments. Why do we need to conduct controlled experiments? What is the evaluation metric for the experiments? The last three parts are more technically focused. The third part introduces some alternative methods when controlled experiments are not feasible. The fourth part focused on building the experimental platform. The last part mainly focused on how to analyze results from our experiments, what are the potential pitfalls and methods to improve it.&lt;/p&gt;
+&lt;h1 id=&#34;1-why-should-we-use-ab-testing&#34;&gt;1. Why should we use A/B Testing?&lt;/h1&gt;
+&lt;p&gt;Imagine we introduce a new feature into our online service, and we see an increase in traffic. Can we claim that if we roll out the feature to all customers can increase user engagement? Not necessarily. The feature can be positively or negatively correlated with traffic or have nothing to do with traffic. A/B testing can help with establishing causality with high confidence, have more power to detect small/unexpected changes.&lt;/p&gt;
+&lt;h1 id=&#34;2-how-to-design-the-experiment&#34;&gt;2. How to design the experiment?&lt;/h1&gt;
+&lt;h2 id=&#34;21-create-metric-based-on-objective&#34;&gt;2.1 Create metric based on objective&lt;/h2&gt;
+&lt;p&gt;In reality, we usually have more than one business metric to use in experimental design. These metrics must be measurable, attributable, sensitive, and timely. One way to combine multiple metrics is to normalize each metric and then create a weighted combination of them, such as credit score. To decide how many metrics to use, one rough rule of thumb is to limit the number of metrics to five. Because of multiple testing problem, if we have too many metrics, the probability of seeing a significant result is high.&lt;/p&gt;
+&lt;h2 id=&#34;22-aa-test&#34;&gt;2.2 A/A test&lt;/h2&gt;
+&lt;h3 id=&#34;why-we-need-aa-test&#34;&gt;Why we need A/A test?&lt;/h3&gt;
+&lt;p&gt;A/A test is almost the same as the A/B test, but the treatment and control group receive the same treatment.
+Some benefits of running the A/A test.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ensure no bias between the treatment and control group. For example, if we use the same users in the last experiment in the current experiment, there might be residual effects, tests from the last experiment can influence the current experiment.&lt;/li&gt;
+&lt;li&gt;Assess metric variability. If we have more and more data over time, we want to see how the data distribution change over time.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;how-to-run-aa-test&#34;&gt;How to run A/A test?&lt;/h3&gt;
+&lt;p&gt;Simulate thousands of experiments, check if the distribution of p-value is uniform. Sometimes running thousands of tests can be expensive. One workaround is to use data from the previous experiment. For example, we stored the experiment results from last week, and then reassign the user into the treatment and control group, and then calculate the p-value. To check if the distribution follows a uniform distribution, we can run the goodness-of-fit test such as Anderson-Darling and Kolmogorov–Smirnov (KS) to check if it follows a uniform distribution.&lt;/p&gt;
+&lt;h3 id=&#34;aa-test-fails&#34;&gt;A/A test fails?&lt;/h3&gt;
+&lt;p&gt;The reason could be outliers in the data or
+metric has a highly skewed distribution. In this case, we can cap the data.&lt;/p&gt;
+&lt;h2 id=&#34;23-choose-significance-level-power&#34;&gt;2.3 Choose significance level, power&lt;/h2&gt;
+&lt;p&gt;The significance level is the one we compare with the p-value, if the p-value is less than the significance level, then we can say that the p-value is significant, which means that we should reject the null hypothesis.&lt;/p&gt;
+&lt;p&gt;Power is the probability the test can detect the significance difference(positive) when it is actually positive.&lt;/p&gt;
+&lt;h2 id=&#34;24-calculate-sample-size&#34;&gt;2.4 Calculate sample size&lt;/h2&gt;
+&lt;p&gt;Based on the power and significance level, we can calculate the sample size we need for the experiment.&lt;/p&gt;
+&lt;p&gt;Besides, to play around with significance level and power, we can also transform or cap the metric to change the required sample size.&lt;/p&gt;
+&lt;p&gt;For metrics that have higher skewness, if we do some transformation or cap it. Then the required sample size will be reduced.&lt;/p&gt;
+&lt;h2 id=&#34;25-decide-timepopulationunit-to-run-the-experiments&#34;&gt;2.5 Decide time/population/unit to run the experiments&lt;/h2&gt;
+&lt;p&gt;Since some users will only visit the website once in the online experiment, thus duration is also important when considering sample size.&lt;/p&gt;
+&lt;p&gt;The usual approach is the randomization unit and analysis unit are the same. One example is the randomization unit is user, and the analysis unit is click-per-user, then the calculation is easier to compute.  But if the randomization unit is different than the analysis unit, for example, if the randomization unit is user, but the analysis unit is click-through-rate-per-page, then if a bot exists, it can generate thousands of page view using one user ID, in this case, we can limit the number of page-view per user to avoid such outliers. We need to use the bootstrap and delta method.&lt;/p&gt;
+&lt;p&gt;The most common one is user-based randomization. We can track it by user login-ID, cookie ID.&lt;/p&gt;
+&lt;h2 id=&#34;26-analyze-results&#34;&gt;2.6 Analyze results&lt;/h2&gt;
+&lt;h3 id=&#34;irrelevant-metric-significant-multiple-testing-problem&#34;&gt;Irrelevant metric significant: multiple testing problem&lt;/h3&gt;
+&lt;p&gt;When we run thousands of tests, or on different metrics, it is likely we get significant results even they do not make sense. This is also known as the multiple testing problem. One solution is to separate metrics into different tiers. For each tier, we give them a different significance level.
+Another common solution to the multiple testing problem is Bonferroni correction.&lt;/p&gt;
+&lt;h3 id=&#34;improve-powersensitivity&#34;&gt;Improve power/sensitivity&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Choose the metric that has a smaller variance&lt;/li&gt;
+&lt;li&gt;Transform metric through cap, binarization, log transformation.&lt;/li&gt;
+&lt;li&gt;Triggered analysis&lt;/li&gt;
+&lt;li&gt;Stratification&lt;/li&gt;
+&lt;li&gt;Randomization at a more granular level&lt;/li&gt;
+&lt;li&gt;Paired experiment&lt;/li&gt;
+&lt;li&gt;Pool control groups&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sample-ratio-mismatch-srm&#34;&gt;Sample Ratio Mismatch (SRM)&lt;/h3&gt;
+&lt;p&gt;SRM is a guardrail metric that ensures the validity of the experiment results. When we set up the experiment, we have a ratio of users between the treatment and control group, the experimental results should close to the experimental design ratio. When the p-value from the t-test or chi-square test is low, then there is a problem of SRM. The metrics we used are likely to be invalid.&lt;/p&gt;
+&lt;h3 id=&#34;novelty-effects&#34;&gt;Novelty effects&lt;/h3&gt;
+&lt;p&gt;When the new feature introduced, users might be uses a lot due to it is new, and as time goes by, the users might use it much less. One way to detect this is to plot usage over time.&lt;/p&gt;
+&lt;h1 id=&#34;3-when-is-ab-testing-not-a-good-idea&#34;&gt;3. When is AB testing not a good idea?&lt;/h1&gt;
+&lt;p&gt;There are cases when A/B testing is not working.&lt;/p&gt;
+&lt;h3 id=&#34;1-we-can-not-control-user-behavior&#34;&gt;1. We can not control user behavior.&lt;/h3&gt;
+&lt;p&gt;For example, we can not control certain user behavior. such as ask the user to switch their phone.&lt;/p&gt;
+&lt;h3 id=&#34;2-high-opportunity-cost&#34;&gt;2. High opportunity cost&lt;/h3&gt;
+&lt;p&gt;If users do not receive treatment, we might lose money. For example, we want to run the ad on the event only happens once a year.&lt;/p&gt;
+&lt;h3 id=&#34;3-leakage-and-interference-between-variants&#34;&gt;3. Leakage and Interference between variants&lt;/h3&gt;
+&lt;p&gt;If the users are interacting with each other, also known as the network effect, then control and treatment groups are not independent. In this case, we need to create isolation to make sure that the units in the treatment and control group are independent. For example, we can use geometric-based isolation when conducting design on a social network.&lt;/p&gt;
+&lt;h3 id=&#34;4-experiments-require-a-long-time-to-take-effects&#34;&gt;4. Experiments require a long time to take effects&lt;/h3&gt;
+&lt;p&gt;There are some experiments that require a longer time to run. The long term and short term effect can be different. Below are several reasons.&lt;/p&gt;
+&lt;p&gt;User-learned effect: The user might need a longer time to learn the new feature.&lt;/p&gt;
+&lt;p&gt;Delayed effect: There is a large time gap between the feature launch to the time the treatment takes effect. For example, there could be months between a customer book a hotel to actually go there.&lt;/p&gt;
+&lt;p&gt;Network effect: For example, in a two-sided marketplace, introduce a new feature can increase the demand, but the supply needs time to catch up, thus the treatment effects take longer to measure.&lt;/p&gt;
+&lt;p&gt;Ecosystem change: Policy changes, seasonality, competitor&amp;rsquo;s similar features.&lt;/p&gt;
+&lt;p&gt;Keep the experiment running for a long time can introduce survivor bias, and the feature can also interact with other new features as time evolves.&lt;/p&gt;
+&lt;p&gt;Alternative methods such as cohort analysis, the reverse experiment can be used to measure the long-term effect.&lt;/p&gt;
+&lt;h1 id=&#34;4-alternative-methods-when-ab-testing-is-expensive-or-not-feasible&#34;&gt;4. Alternative methods when AB testing is expensive or not feasible&lt;/h1&gt;
+&lt;p&gt;The observational causal study is one method when the controlled experiment is not feasible.&lt;/p&gt;
+&lt;h2 id=&#34;41-observational-causal-study&#34;&gt;4.1 observational causal study&lt;/h2&gt;
+&lt;p&gt;Outcome for treated -Outcome for untreated
+= Outcome for treated - Outcome for treated if not treated +
+Outcome for treated if not treated - Outcome for untreated if treated
+= Impact of treatment on treated + Selection Bias&lt;/p&gt;
+&lt;p&gt;If it is a randomized controlled experiment, then the expected value of selection bias is zero. But in cases mentioned in part 4, it is not. That is why causal study comes into play. In contrast to A/B testing, the causal study has no randomized assignment on the unit, it looks at historical data. Though both causal study and retrospective data analysis are using historical study. The goals are different, the goal of the causal study is to find the causality relationship.&lt;/p&gt;
+&lt;h3 id=&#34;methods&#34;&gt;Methods&lt;/h3&gt;
+&lt;h4 id=&#34;1-interrupted-time-series-its&#34;&gt;1. Interrupted time series (ITS)&lt;/h4&gt;
+&lt;p&gt;ITS is a quasi-experimental design, which we can control the change, but not randomize the unit. We test the treatment/control of the same population over time. The main confounding effect is the time-based effect such as seasonality.&lt;/p&gt;
+&lt;h4 id=&#34;2-interleaved-experiment&#34;&gt;2. Interleaved experiment&lt;/h4&gt;
+&lt;p&gt;Interleaved experiment is commonly used to evaluate the ranking algorithm. One example is to mix results from two algorithms, and then compare the click-through-rate from two algorithms.&lt;/p&gt;
+&lt;h4 id=&#34;3-regression-discontinuity-design-rdd&#34;&gt;3. Regression Discontinuity Design (RDD)&lt;/h4&gt;
+&lt;p&gt;RDD is commonly used when there is a clear threshold that identifies the treatment group. We select the group which has a threshold right above the threshold as the treatment group, and those with a threshold right below the threshold as the control group. By doing this, it can reduce selection bias. One main issue of RDD is again the confounding effects. The results can be contaminated if there is another important factor that has the same threshold. For example, if we want to test the alcohol assumption at legal drinking age 21, but gambling legal age is also 21.&lt;/p&gt;
+&lt;h4 id=&#34;4-instrumental-variableiv-and-natural-experiment&#34;&gt;4. Instrumental variable(IV) and Natural Experiment&lt;/h4&gt;
+&lt;p&gt;IV approximate the random assignment.  For example, to compare the earnings between Veterans, an instrument can be the Vietnam war draft lottery. Natural experiment
+, such as twins in twins medicine study.&lt;/p&gt;
+&lt;h4 id=&#34;5-propensity-score-matching&#34;&gt;5. Propensity score matching&lt;/h4&gt;
+&lt;p&gt;Similar to stratified sampling, PSM segment users into groups by matching on a constructed propensity score.&lt;/p&gt;
+&lt;h4 id=&#34;6-difference-in-difference-dd&#34;&gt;6. Difference in difference (DD)&lt;/h4&gt;
+&lt;p&gt;We make a treatment to treatment group at a certain time T, and then we note the difference of treatment group before and after time T, compare it with the difference of control group before and after time T. The difference in the control group over time can capture external factors such as seasonality, inflation.&lt;/p&gt;
+&lt;h3 id=&#34;pitfalls&#34;&gt;Pitfalls&lt;/h3&gt;
+&lt;p&gt;Confounding effects and deceptive correlations are common pitfalls in observational causal studies.&lt;/p&gt;
+&lt;h2 id=&#34;42-more-methods&#34;&gt;4.2 More methods&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;User experience research&lt;/li&gt;
+&lt;li&gt;Focus group&lt;/li&gt;
+&lt;li&gt;Survey&lt;/li&gt;
+&lt;li&gt;Log-based analysis&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The methods above can also be used when A/B testing is not feasible or expensive to run.&lt;/p&gt;
+&lt;h1 id=&#34;references&#34;&gt;References:&lt;/h1&gt;
+&lt;p&gt;Kohavi, R., Tang, D., &amp;amp; Xu, Y. (2020). Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing. Cambridge: Cambridge University Press. doi:10.1017/9781108653985&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Optimization Learning Notes</title>
